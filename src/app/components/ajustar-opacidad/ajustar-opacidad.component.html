@@ -1,2 +1,12 @@
-<input type="range" [(ngModel)]="opacidad" (input)="emitirOpacidad()">
-
+<div class="fixed-corner">
+    <i class="fas fa-lightbulb iconLampara"></i>
+    <input type="range" 
+           min="0" 
+           max="1" 
+           step="0.01" 
+           style="transform: rotate(270deg);"
+           (input)="emitirOpacidad()" 
+           [(ngModel)]="opacidad">
+    <span style="margin-top: 50%;">{{ opacidad }}</span>
+  </div>
+  

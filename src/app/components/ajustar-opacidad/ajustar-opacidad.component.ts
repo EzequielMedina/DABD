@@ -7,8 +7,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class AjustarOpacidadComponent {
 @Output() opacidadCambiada = new EventEmitter<number>();
-@Input() opacidad: number | undefined;
-
+opacidad: number = 1;
 
 emitirOpacidad(){
   this.opacidadCambiada.emit(this.opacidad)

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BookProvider } from 'src/app/providers/bookProvider';
 import { Ibook } from 'src/app/interfaces/ibook';
+import { SiteLoaderComponent } from '../site-loader/site-loader.component';
 @Component({
   selector: 'app-card-book',
   templateUrl: './card-book.component.html',
@@ -8,23 +9,38 @@ import { Ibook } from 'src/app/interfaces/ibook';
 })
 export class CardBookComponent implements OnInit {
   public listBook: Ibook[] = [];
+  public cantidadBook: number = 0;
+  public progress: number = 0;
+  public cargaCompleta:boolean = false;
   constructor(private bookProvider: BookProvider) { }
 
 
   ngOnInit(): void {
     this.obtenerListadoLibros();
+    this.simulateLoading();
   }
   obtenerListadoLibros() {
 
     this.bookProvider.listBook().subscribe(response => {
       if (response.status == "OK") {
-        for (let i = 0; i < response.data.length; i++) {
+        this.cantidadBook = response.data.length;
+        for (let i = 0; i < this.cantidadBook; i++) {
           const libro: Ibook = response.data?.[i];
           this.listBook.push(libro);
         }
       }
     })
   };
+
+  simulateLoading() {
+    const interval = setInterval(() => {
+      this.progress += 10;
+      if (this.progress >= 100) {
+        clearInterval(interval);
+        this.cargaCompleta = true;
+      }
+    }, 500);
+  }
 
   actualizarAnio(index: number) {
     this.listBook[index].anioPublicacion = this.incrementarAnio(this.listBook[index].anioPublicacion);

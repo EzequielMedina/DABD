@@ -5,5 +5,6 @@ export interface Ibook {
     anioPublicacion: string,
     autor: string,
     categoria: string,
-    rutaImg: string
+    rutaImg: string,
+    mostrarLibro: boolean 
 }

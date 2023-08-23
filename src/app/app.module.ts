@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ImagePortadaComponent } from './components/image-portada/image-portada.component';
 import { AjustarOpacidadComponent } from './components/ajustar-opacidad/ajustar-opacidad.component';
 import { FormsModule } from '@angular/forms';
+import { SiteLoaderComponent } from './components/site-loader/site-loader.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { FormsModule } from '@angular/forms';
     TitlePrincipalComponent,
     CardBookComponent,
     ImagePortadaComponent,
-    AjustarOpacidadComponent
+    AjustarOpacidadComponent,
+    SiteLoaderComponent
   ],
   imports: [
     BrowserModule,

@@ -11,6 +11,6 @@ export class AppComponent {
 
   actulizarOpaciodad(nuevaOpacidad: number){
     this.opacidad = nuevaOpacidad;
-    document.documentElement.style.setProperty('--opacidad', this.opacidad.toString());
+    document.documentElement.style.setProperty('opacity', this.opacidad.toString());
   }
 }

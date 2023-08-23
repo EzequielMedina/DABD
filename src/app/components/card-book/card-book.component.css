@@ -1,8 +1,28 @@
-.btnActualizarAnio{
+.btnActualizarAnio {
     width: 50%;
     align-self: center;
     margin-bottom: 2%;
 }
-.contentImage{
+
+.contentImage {
     text-align: center;
+}
+
+.containerCheckboox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1%;
+
+}
+
+.containerCheckboox div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.containerCheckboox div label {
+    margin-right: 2%;
 }

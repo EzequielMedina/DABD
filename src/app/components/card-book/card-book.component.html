@@ -1,21 +1,38 @@
 <div class="container">
-    <div class="row">
-        <div class="col-4 mb-4" *ngFor="let libro of listBook; let i = index">
-            <!-- Añade una condición para mostrar solo las primeras 10 tarjetas -->
-            <div class="card rounded-lg shadow">
-                <!-- <img src="ruta-de-imagen" class="card-img-top" alt="Portada del libro"> -->
-                <div class="card-body">
-                    <h5 class="card-title">{{ libro.nombre }}</h5>
-                    <div class="contentImage">
-                        <app-image-portada [rutaImage]="libro.rutaImg"></app-image-portada>
-                    </div>
-                    <p class="card-text">{{ libro.descripcion }}</p>
-                    <p class="card-text">Categoría: {{ libro.categoria }}</p>
-                    <p class="card-text">Autor: {{ libro.autor }}</p>
-                    <p class="card-text">Año de publicación: {{ libro.anioPublicacion }}</p>
-                </div>
-                <button class="btn btn-primary btnActualizarAnio" type="button" (click)="actualizarAnio(i)">Actualizar año de publicación </button>
-            </div>
+  <ng-container *ngIf="!cargaCompleta">
+    <app-site-loader  [progress]="progress"></app-site-loader>
+
+  </ng-container>
+  <ng-container *ngIf="cargaCompleta">
+  <div class="row mt-4">
+    <div class="col-lg-4 col-md-4 col-sm-6 mb-4" *ngFor="let libro of listBook; let i = index">
+      <!-- Añade una condición para mostrar solo las primeras 10 tarjetas -->
+      <div class="card rounded-lg shadow">
+        <div class="containerCheckboox">
+          <h5 class="card-title">{{ libro.nombre }}</h5>
+          <div >
+
+            <label class="form-check-label">Mostrar</label>
+            <input class="form-check-input" type="checkbox" [(ngModel)]="libro.mostrarLibro">
+          </div>
         </div>
+        <ng-container *ngIf="libro.mostrarLibro">
+
+          <!-- <img src="ruta-de-imagen" class="card-img-top" alt="Portada del libro"> -->
+          <div class="card-body">
+            <div class="contentImage">
+              <app-image-portada [rutaImage]="libro.rutaImg"></app-image-portada>
+            </div>
+            <p class="card-text">{{ libro.descripcion }}</p>
+            <p class="card-text">Categoría: {{ libro.categoria }}</p>
+            <p class="card-text">Autor: {{ libro.autor }}</p>
+            <p class="card-text">Año de publicación: {{ libro.anioPublicacion }}</p>
+          </div>
+          <button class="btn btn-primary btnActualizarAnio" type="button" (click)="actualizarAnio(i)">Actualizar año de
+            publicación </button>
+        </ng-container>
+      </div>
     </div>
+  </div>
+</ng-container>
 </div>
