@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'bibilioteca-nacional';
+  opacidad: number = 1;
+
+  actulizarOpaciodad(nuevaOpacidad: number){
+    this.opacidad = nuevaOpacidad;
+    document.documentElement.style.setProperty('--opacidad', this.opacidad.toString());
+  }
 }

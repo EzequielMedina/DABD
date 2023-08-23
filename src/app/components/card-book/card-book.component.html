@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="row">
+        <div class="col-4 mb-4" *ngFor="let libro of listBook; let i = index">
+            <!-- Añade una condición para mostrar solo las primeras 10 tarjetas -->
+            <div class="card rounded-lg shadow">
+                <!-- <img src="ruta-de-imagen" class="card-img-top" alt="Portada del libro"> -->
+                <div class="card-body">
+                    <h5 class="card-title">{{ libro.nombre }}</h5>
+                    <div class="contentImage">
+                        <app-image-portada [rutaImage]="libro.rutaImg"></app-image-portada>
+                    </div>
+                    <p class="card-text">{{ libro.descripcion }}</p>
+                    <p class="card-text">Categoría: {{ libro.categoria }}</p>
+                    <p class="card-text">Autor: {{ libro.autor }}</p>
+                    <p class="card-text">Año de publicación: {{ libro.anioPublicacion }}</p>
+                </div>
+                <button class="btn btn-primary btnActualizarAnio" type="button" (click)="actualizarAnio(i)">Actualizar año de publicación </button>
+            </div>
+        </div>
+    </div>
+</div>
