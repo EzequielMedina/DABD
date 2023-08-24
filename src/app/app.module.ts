@@ -10,6 +10,8 @@ import { ImagePortadaComponent } from './components/image-portada/image-portada.
 import { AjustarOpacidadComponent } from './components/ajustar-opacidad/ajustar-opacidad.component';
 import { FormsModule } from '@angular/forms';
 import { SiteLoaderComponent } from './components/site-loader/site-loader.component';
+import { TitleDinamicoComponent } from './components/title-dinamico/title-dinamico.component';
+import { AntiguedadPipe } from './pipes/antiguedad.pipe';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { SiteLoaderComponent } from './components/site-loader/site-loader.compon
     CardBookComponent,
     ImagePortadaComponent,
     AjustarOpacidadComponent,
-    SiteLoaderComponent
+    SiteLoaderComponent,
+    TitleDinamicoComponent,
+    AntiguedadPipe
   ],
   imports: [
     BrowserModule,

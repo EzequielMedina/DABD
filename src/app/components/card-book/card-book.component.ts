@@ -12,6 +12,7 @@ export class CardBookComponent implements OnInit {
   public cantidadBook: number = 0;
   public progress: number = 0;
   public cargaCompleta:boolean = false;
+  public title: string = "";
   constructor(private bookProvider: BookProvider) { }
 
 
@@ -23,6 +24,7 @@ export class CardBookComponent implements OnInit {
 
     this.bookProvider.listBook().subscribe(response => {
       if (response.status == "OK") {
+        this.title = "Listado de Libros"
         this.cantidadBook = response.data.length;
         for (let i = 0; i < this.cantidadBook; i++) {
           const libro: Ibook = response.data?.[i];
@@ -39,7 +41,7 @@ export class CardBookComponent implements OnInit {
         clearInterval(interval);
         this.cargaCompleta = true;
       }
-    }, 500);
+    }, 200);
   }
 
   actualizarAnio(index: number) {
@@ -48,19 +50,17 @@ export class CardBookComponent implements OnInit {
 
   incrementarAnio(anioPublicacion: string){
     const fecha = new Date(anioPublicacion);
-
-    // Verifica si la conversión de la fecha es válida
     if (!isNaN(fecha.getTime())) {
       fecha.setFullYear(fecha.getFullYear() + 1);
       const nuevoAnio = fecha.getFullYear();
-      const nuevoMes = fecha.getMonth() + 1; // Los meses son indexados desde 0
+      const nuevoMes = fecha.getMonth() + 1; 
       const nuevoDia = fecha.getDate();
   
       const nuevoAnioStr = nuevoAnio.toString().padStart(4, '0');
       const nuevoMesStr = nuevoMes.toString().padStart(2, '0');
       const nuevoDiaStr = nuevoDia.toString().padStart(2, '0');
   
-      return `${nuevoDiaStr}/${nuevoMesStr}/${nuevoAnioStr}`; // Devuelve el nuevo año como string
+      return `${nuevoDiaStr}/${nuevoMesStr}/${nuevoAnioStr}`; 
     } else {
       return 'Fecha inválida';
     }

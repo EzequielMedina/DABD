@@ -7,7 +7,4 @@ import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 })
 export class SiteLoaderComponent {
   @Input() progress: number = 0;
-// Cambia esto según la cantidad de libros
-
- 
 }
